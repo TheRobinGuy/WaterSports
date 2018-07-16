@@ -1,9 +1,9 @@
 <ion-content padding>
   <ion-list>
     <ion-item text-wrap *ngFor="let d of dives">
-      <button (click)="expandItem(d)">
-        <div>{{d.date}} + {{d.hidden}}</div>
-        <div [hidden]=d.hidden>{{d.location}}</div>
+      <button (click)="expandItem(d)" class="divesBtn">
+        <div class="diveBtnTitle"><b>{{d.date}}</b></div>
+        <div [hidden]=d.hidden class="diveBtnBody">{{d.location}}</div>
       </button>
     </ion-item>
   </ion-list>
