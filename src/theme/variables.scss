@@ -21,11 +21,18 @@ $colors: (
 @import "noto-sans";
 
 .chartTable{
-  border: 2px solid darkblue;
+  margin: 0px;
+  padding: 0px;
 }
 
 .tableHead{
-  font-size: 1.5em;
+  // background-color: #488aff;
+  background: linear-gradient(#488aff, lightskyblue);
+}
+
+.tableBody{
+  // background-color: #a2a6ac;
+  background: linear-gradient(rgb(141, 138, 138), #cfd4dd);
 }
 
 ion-icon {
