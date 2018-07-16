@@ -1,3 +1,10 @@
-page-home {
+page-home {}
 
+.ios,
+.md {
+  page-home {
+    button {
+      align-items: baseline;
+    }
+  }
 }
