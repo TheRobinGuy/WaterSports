@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { ExpandableComponent } from './expandable/expandable';
+import { DataComponent } from './data/data';
 @NgModule({
-	declarations: [ExpandableComponent],
+	declarations: [DataComponent],
 	imports: [],
-	exports: [ExpandableComponent]
+	exports: [DataComponent]
 })
 export class ComponentsModule {}

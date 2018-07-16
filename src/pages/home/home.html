@@ -5,35 +5,7 @@
 </ion-header>
 
 <ion-content padding>
-  <!-- <ion-grid class="chartTable">
-    <ion-row class="tableHead">
-      <ion-col col-2 col-sm>Depth</ion-col>
-      <ion-col col-3 col-sm>Location</ion-col>
-      <ion-col col-2 col-sm>Time</ion-col>
-      <ion-col col-2 col-sm>Buddy</ion-col>
-      <ion-col col-2 col-sm>Date</ion-col>
-    </ion-row>
-    <ion-row class="tableBody">
-      <ion-col col-2 col-sm>UserDepth</ion-col>
-      <ion-col col-3 col-sm>UserLocation</ion-col>
-      <ion-col col-2 col-sm>UserTime</ion-col>
-      <ion-col col-2 col-sm>UserBuddy</ion-col>
-      <ion-col col-2 col-sm>UserDate</ion-col>
-    </ion-row>
-  </ion-grid> -->
 
-  <ion-list>
-    <button detail-none (click)="expandItem(item)" ion-item *ngFor="let item of items">
-      <ion-thumbnail item-start>
-        <img src="http://placehold.it/100">
-      </ion-thumbnail>
-      <h2>Header</h2>
-      <p>Para</p>
-      <expandable [expandHeight]="itemExpandHeight" [expanded]="item.expanded">
-          Hello people
-      </expandable>
-      <button ion-button clear item-end>View</button>
-    </button>
-  </ion-list>
+  <page-expandable></page-expandable>
 
 </ion-content>

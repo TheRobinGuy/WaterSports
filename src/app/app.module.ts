@@ -10,7 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { ExpandableComponent } from '../components/expandable/expandable';
+import { ExpandablePage } from '../pages/expandable/expandable';
 
 @NgModule({
   declarations: [
@@ -19,11 +19,11 @@ import { ExpandableComponent } from '../components/expandable/expandable';
     ContactPage,
     HomePage,
     TabsPage,
-    ExpandableComponent
+    ExpandablePage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -32,7 +32,7 @@ import { ExpandableComponent } from '../components/expandable/expandable';
     ContactPage,
     HomePage,
     TabsPage,
-    ExpandableComponent
+    ExpandablePage
   ],
   providers: [
     StatusBar,
