@@ -2,8 +2,18 @@
   <ion-list>
     <ion-item text-wrap *ngFor="let d of dives">
       <button (click)="expandItem(d)" class="divesBtn">
-        <div class="diveBtnTitle"><b>{{d.date}}</b></div>
-        <div [hidden]=d.hidden class="diveBtnBody">{{d.location}}</div>
+        <div class="diveBtnTitle">
+          <b>{{d.date}} | {{d.location}}</b>
+        </div>
+        <div [hidden]=d.hidden class="diveBtnBody">
+          <ion-row>
+            <ion-col col-6>Depth : {{d.depth}}</ion-col>
+            <ion-col col-6>Time : {{d.time}}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>Buddy : {{d.buddy}}</ion-col>
+          </ion-row>
+        </div>
       </button>
     </ion-item>
   </ion-list>

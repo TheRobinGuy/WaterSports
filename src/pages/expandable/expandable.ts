@@ -9,10 +9,10 @@ import { IonicPage, NavController } from 'ionic-angular';
 export class ExpandablePage {
 
   dives = [
-    { date: "01 Jan 2018", location: "Mullaghmore, Sligo.", hidden: false },
-    { date: "05 Jan 2018", location: "Mullaghmore, Sligo.", hidden: true },
-    { date: "23 Mar 2018", location: "Cassan Snd, Donegal.", hidden: true },
-    { date: "24 Mar 2018", location: "St. Johns Pt, Donegal.", hidden: true },
+    { date: "01 Jan 2018", location: "Mullaghmore, Sligo.", buddy: "Jim o'Tool", depth: "10m", time: "28 min", hidden: true },
+    { date: "05 Jan 2018", location: "Mullaghmore, Sligo.", buddy: "Fred Finch", depth: "11.1m", time: "27 min", hidden: true },
+    { date: "23 Mar 2018", location: "Cassan Snd, Donegal.", buddy: "Mark Eer", depth: "13.2m", time: "29 min", hidden: true },
+    { date: "24 Mar 2018", location: "St. Johns Pt, Donegal.", buddy: "Danny Rand", depth: "15m", time: "22 min", hidden: true },
   ];
 
   constructor(public navCtrl: NavController) {
