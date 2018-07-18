@@ -11,6 +11,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ExpandablePage } from '../pages/expandable/expandable';
+import { ChartsPage } from '../pages/charts/charts';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -19,11 +21,13 @@ import { ExpandablePage } from '../pages/expandable/expandable';
     ContactPage,
     HomePage,
     TabsPage,
-    ExpandablePage
+    ExpandablePage,
+    ChartsPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    ChartsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -32,7 +36,8 @@ import { ExpandablePage } from '../pages/expandable/expandable';
     ContactPage,
     HomePage,
     TabsPage,
-    ExpandablePage
+    ExpandablePage,
+    ChartsPage
   ],
   providers: [
     StatusBar,

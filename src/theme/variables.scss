@@ -21,6 +21,10 @@ $colors: (
 @import "roboto";
 @import "noto-sans";
 
+.diveChart{
+  max-height: 5em;
+}
+
 .chartTable{
   margin: 0px;
   padding: 0px;
