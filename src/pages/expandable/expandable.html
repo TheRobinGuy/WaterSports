@@ -8,7 +8,7 @@
         <div [hidden]=d.hidden class="diveBtnBody">
           <ion-row>
             <ion-col col-6>Depth : {{d.depth}}</ion-col>
-            <ion-col col-6>Time : {{d.time}}</ion-col>
+            <ion-col col-6>Time : {{d.time}} min</ion-col>
           </ion-row>
           <ion-row>
             <ion-col>Buddy : {{d.buddy}}</ion-col>
@@ -22,10 +22,10 @@
     </ion-item>
     <button (click)="addSelected()" class="addItem">+</button>
     <div [hidden]=this.hideAdd>
-      <p><ion-col col-5>Date : </ion-col><ion-col push-3 col-5><input [(ngModel)]="dateIn" type="text" placeholder="dd/mmm/yyy"></ion-col></p>
+      <p><ion-col col-5>Date : </ion-col><ion-col push-3 col-5><input [(ngModel)]="dateIn" type="date" placeholder="dd/mmm/yyy"></ion-col></p>
       <p><ion-col col-5>Location : </ion-col><ion-col push-3 col-5><input [(ngModel)]="locationIn" type="text" placeholder="Location"></ion-col></p>
-      <p><ion-col col-5>Time : </ion-col><ion-col push-3 col-5><input [(ngModel)]="minutesIn" type="text" placeholder="Minutes"></ion-col></p>
-      <p><ion-col col-5>Depth : </ion-col><ion-col push-3 col-5><input [(ngModel)]="depthIn" type="text" placeholder="Metres"></ion-col></p>
+      <p><ion-col col-5>Time : </ion-col><ion-col push-3 col-5><input [(ngModel)]="minutesIn" type="number" placeholder="Minutes"></ion-col></p>
+      <p><ion-col col-5>Depth : </ion-col><ion-col push-3 col-5><input [(ngModel)]="depthIn" type="number" placeholder="Metres"></ion-col></p>
       <p><ion-col col-5>Buddy : </ion-col><ion-col push-3 col-5><input [(ngModel)]="buddyIn" type="text" placeholder="Name"></ion-col></p>
       <p><ion-col col-5>Dive Type : </ion-col><ion-col push-3 col-5><input [(ngModel)]="divetypeIn" type="text" placeholder="Type"></ion-col></p>
     <button (click)="addItem()">Add Dive Log</button>    
