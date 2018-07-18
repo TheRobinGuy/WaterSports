@@ -17,6 +17,13 @@ export class ExpandablePage {
 
   hideAdd: boolean = true;
 
+  dateIn = '';
+  locationIn = '';
+  minutesIn = '';
+  depthIn = '';
+  buddyIn = '';
+  divetypeIn = '';
+
   constructor(public navCtrl: NavController) {
 
   }
@@ -36,14 +43,19 @@ export class ExpandablePage {
   }
 
   addSelected = () => {
-    console.log(this.hideAdd);
     this.hideAdd = !this.hideAdd;
-    console.log(this.hideAdd);    
   }
 
-  addItem = (item) => {
-    if (item.date != '' && item.location != '' && item.buddy != '' && item.depth != '' && item.time != '' && item.diveType != '') {
+  addItem = () => {
+    if (this.dateIn != '' && this.locationIn != '' && this.buddyIn != '' && this.depthIn != '' && this.minutesIn != '' && this.divetypeIn != '') {
+      let item = { date: this.dateIn, location: this.locationIn, buddy: this.buddyIn, depth: this.depthIn + "m", time: this.minutesIn + " min", airIn: "210", airOut: "160", diveType: this.divetypeIn, hidden: true }
       this.dives.push(item);
+      this.dateIn = '';
+      this.locationIn = '';
+      this.minutesIn = '';
+      this.depthIn = '';
+      this.buddyIn = '';
+      this.divetypeIn = '';
     }
     else{
       alert("Item must have content!");
