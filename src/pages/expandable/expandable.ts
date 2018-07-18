@@ -15,11 +15,13 @@ export class ExpandablePage {
     { date: "24 Mar 2018", location: "St. Johns Pt, Donegal.", buddy: "Danny Rand", depth: "15m", time: "22 min", airIn: "210", airOut: "160", diveType: "Scenic", hidden: true },
   ];
 
+  hideAdd: boolean = true;
+
   constructor(public navCtrl: NavController) {
 
   }
 
-  expandItem(item) {
+  expandItem = (item) => {
 
     this.dives.map((listItem) => {
 
@@ -31,6 +33,20 @@ export class ExpandablePage {
       }
       return listItem;
     });
+  }
 
+  addSelected = () => {
+    console.log(this.hideAdd);
+    this.hideAdd = !this.hideAdd;
+    console.log(this.hideAdd);    
+  }
+
+  addItem = (item) => {
+    if (item.date != '' && item.location != '' && item.buddy != '' && item.depth != '' && item.time != '' && item.diveType != '') {
+      this.dives.push(item);
+    }
+    else{
+      alert("Item must have content!");
+    }
   }
 }

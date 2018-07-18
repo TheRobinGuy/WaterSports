@@ -21,5 +21,15 @@
       </button>
     </ion-item>
   </ion-list>
+  <button (click)="addSelected()" class="addItem">+</button>
+  <div [hidden]=this.hideAdd>
+    <p><ion-col col-5>Date : </ion-col><ion-col push-3 col-5><input type="text" placeholder="dd/mmm/yyy"></ion-col></p>
+    <p><ion-col col-5>Location : </ion-col><ion-col push-3 col-5><input class="addInput" type="text" placeholder="Location"></ion-col></p>
+    <p><ion-col col-5>Time : </ion-col><ion-col push-3 col-5><input class="addInput" type="text" placeholder="Minutes"></ion-col></p>
+    <p><ion-col col-5>Depth : </ion-col><ion-col push-3 col-5><input class="addInput" type="text" placeholder="Metres"></ion-col></p>
+    <p><ion-col col-5>Buddy : </ion-col><ion-col push-3 col-5><input class="addInput" type="text" placeholder="Name"></ion-col></p>
+    <p><ion-col col-5>Dive Type : </ion-col><ion-col push-3 col-5><input class="addInput" type="text" placeholder="Type"></ion-col></p>
+  <button (click)="addItem()" class="addItem">+</button>    
+  </div>
   <page-charts></page-charts>
 </ion-content>
