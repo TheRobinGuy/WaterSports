@@ -23,6 +23,8 @@ export class ExpandablePage {
   depthIn = '';
   buddyIn = '';
   divetypeIn = '';
+  addSelectedClicked = false;
+  addIcon = '+';
 
   constructor(public navCtrl: NavController) {
 
@@ -44,6 +46,13 @@ export class ExpandablePage {
 
   addSelected = () => {
     this.hideAdd = !this.hideAdd;
+    this.addSelectedClicked = !this.addSelectedClicked;
+    if(this.addSelectedClicked){
+      this.addIcon = 'x';
+    }
+    else{
+      this.addIcon = '+';
+    }
   }
 
   addItem = () => {

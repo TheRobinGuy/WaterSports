@@ -1,4 +1,4 @@
-<ion-content padding>
+<ion-content padding class="noPaddingBottom">
   <ion-list>
     <ion-item text-wrap *ngFor="let d of dives">
       <ion-row>
@@ -27,7 +27,7 @@
         </ion-col>
       </ion-row>
     </ion-item>
-    <button (click)="addSelected()" class="addItem">+</button>
+    <button (click)="addSelected()" class="addItem">{{addIcon}}</button>
     <div [hidden]=this.hideAdd>
       <p>
         <ion-col col-5>Date : </ion-col>
