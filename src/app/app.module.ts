@@ -13,6 +13,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ExpandablePage } from '../pages/expandable/expandable';
 import { ChartsPage } from '../pages/charts/charts';
 import { ChartsModule } from 'ng2-charts';
+import { AngularFireModule } from 'angularfire2';
+import { FIREBASE_CONFIG } from './firebase.credentials';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { ChartsModule } from 'ng2-charts';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    ChartsModule
+    ChartsModule,
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

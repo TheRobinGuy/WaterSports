@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @IonicPage()
 @Component({
@@ -26,8 +27,8 @@ export class ExpandablePage {
   addSelectedClicked = false;
   addIcon = '+';
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController, public db: AngularFireDatabase) {
+    this.db.list('dives').push(this.dives);
   }
 
   expandItem = (item) => {
