@@ -39,6 +39,20 @@ $colors: (
   margin-left: 1em;
 }
 
+.alignRight{
+  text-align: right;
+  display: inline-block;
+}
+
+.diveAddInput{
+  width: 15em;
+}
+
+.addDiveLabel{
+  display: inline-block;
+  width: 10em;
+}
+
 .addItem{
   font-size: 1.5em;
   border-radius: 3em;
