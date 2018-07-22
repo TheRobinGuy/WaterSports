@@ -28,7 +28,7 @@ export class ExpandablePage {
   addIcon = '+';
 
   constructor(public navCtrl: NavController, public db: AngularFireDatabase) {
-    this.db.list('dives').push(this.dives);
+    // this.db.list('dives').push(this.dives);          
   }
 
   expandItem = (item) => {
@@ -59,6 +59,7 @@ export class ExpandablePage {
   addItem = () => {
     if (this.dateIn != '' && this.locationIn != '' && this.buddyIn != '' && this.depthIn != '' && this.minutesIn != '' && this.divetypeIn != '') {
       let item = { date: this.dateIn, location: this.locationIn, buddy: this.buddyIn, depth: this.depthIn + "m", time: this.minutesIn, airIn: "210", airOut: "160", diveType: this.divetypeIn, hidden: true, showInGraph: false }
+      this.db.list('dives').push(item);      
       this.dives.push(item);
       this.dateIn = '';
       this.locationIn = '';
