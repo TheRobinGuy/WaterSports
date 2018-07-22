@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 @IonicPage()
 @Component({
@@ -9,6 +9,8 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class ExpandablePage {
 
+  // dives: AngularFireList<any[]>;
+  // dives: any;
   dives = [
     { date: "01 Jan 2018", location: "Mullaghmore, Sligo.", buddy: "Jim o'Tool", depth: "10m", time: "28", airIn: "220", airOut: "180", diveType: "Scenic", hidden: true, showInGraph: false },
     { date: "05 Jan 2018", location: "Mullaghmore, Sligo.", buddy: "Fred Finch", depth: "11.1m", time: "27", airIn: "220", airOut: "190", diveType: "Training", hidden: true, showInGraph: false },
@@ -26,9 +28,28 @@ export class ExpandablePage {
   divetypeIn = '';
   addSelectedClicked = false;
   addIcon = '+';
+  
+  // ngOnInit(){
+  //   this.dives = this.db.list('dives');
+  
+  // }
 
   constructor(public navCtrl: NavController, public db: AngularFireDatabase) {
-    // this.db.list('dives').push(this.dives);          
+
+    // this.dives = this.db.list('dives');
+
+    // this.db.list('dives').valueChanges().subscribe(
+    //   result => {
+    //     this.dives.push(result);
+    //   }
+    // );
+
+    // this.db.list('dives').valueChanges().subscribe(item => {
+    //   item.map((key) => {
+    //     this.dives.push(this.db.object('dives/${key.$key}'));
+    //   })
+    //   // this.dives.push(item)
+    // });
   }
 
   expandItem = (item) => {
