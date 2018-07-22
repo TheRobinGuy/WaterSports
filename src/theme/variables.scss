@@ -27,8 +27,16 @@ $colors: (
   width: auto;
 }
 
-.noPaddingBottom{
-  padding-bottom: 0px;
+.addLogBtn{
+  background-color: #32db64;
+  border: .1em solid green;
+  width: 10em;
+  min-height: 2em;
+  border-radius: .5em;
+}
+
+.pushRight{
+  margin-left: 1em;
 }
 
 .addItem{

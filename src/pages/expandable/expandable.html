@@ -1,4 +1,4 @@
-<ion-content padding class="noPaddingBottom">
+<ion-content>
   <ion-list>
     <ion-item text-wrap *ngFor="let d of dives">
       <ion-row>
@@ -28,7 +28,7 @@
       </ion-row>
     </ion-item>
     <button (click)="addSelected()" class="addItem">{{addIcon}}</button>
-    <div [hidden]=this.hideAdd>
+    <div class="pushRight" [hidden]=this.hideAdd>
       <p>
         <ion-col col-5>Date : </ion-col>
         <ion-col push-3 col-5>
@@ -65,11 +65,11 @@
           <input [(ngModel)]="divetypeIn" type="text" placeholder="Type">
         </ion-col>
       </p>
-      <button (click)="addItem()">Add Dive Log</button>
+      <button class="addLogBtn" (click)="addItem()">Add Dive Log</button>
     </div>
   </ion-list>
 
-  <div [hidden]=this.addSelectedClicked>
+  <div class="pushRight" [hidden]=this.addSelectedClicked>
     <page-charts></page-charts>
   </div>
 </ion-content>
