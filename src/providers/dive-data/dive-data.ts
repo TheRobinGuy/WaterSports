@@ -8,6 +8,7 @@ export class DiveDataProvider {
   dives: any = [];
 
   constructor(public db: AngularFireDatabase) {
+    this.getDiveData();
   }
 
   getDiveData = () => {
@@ -17,7 +18,7 @@ export class DiveDataProvider {
       dbData = datas;
       console.log("dives", this.dives);
     },
-      (err) => { console.log("probleme : ", err) });
+      (err) => { console.log("problem : ", err) });
   }
 
   returnDiveData = () => {

@@ -1,19 +1,67 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Chart } from 'chart.js';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+
 
 @IonicPage()
 @Component({
   selector: 'page-charts',
-  templateUrl: 'charts.html',
+  // templateUrl: 'charts.html',
+  template: `
+  <div class="row" *ngIf="lineChartData">
+    <div class="col-md-6">
+      <div style="display: block; overflow: hidden;">
+      <canvas class="diveChart" baseChart width="350" height="400"
+                  [datasets]="lineChartData"
+                  [labels]="lineChartLabels"
+                  [options]="lineChartOptions"
+                  [colors]="lineChartColors"
+                  [legend]="lineChartLegend"
+                  [chartType]="lineChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div>
+  </div>
+
+  `
 })
 export class ChartsPage {
 
-  public lineChartData:Array<any> = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Place A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Place B'},
-    {data: [18, 48, 77, 9, 100, 27, 40], label: 'Place C'}
-  ];
+  dives: any = []; 
+  data: any = [];
+
+  ngOnInit(){
+    this.db.list('/dives').valueChanges().subscribe((datas) => {
+      this.dives = datas;
+      this.dives.forEach(element => {
+        console.log(element.depth + ", " + element.date)
+        this.data.push( element.depth );
+      });
+      console.log("lineChart: " + this.lineChartData);
+    },
+      (err) => { console.log("problem : ", err) });
+  }
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase) {
+    // this.db.list('/dives').valueChanges().subscribe((datas) => {
+    //   this.dives = datas;
+    //   this.dives.forEach(element => {
+    //     console.log(element.depth + ", " + element.date)
+    //     this.lineChartData.push( element.depth );
+    //   });
+    //   console.log(this.lineChartData);
+    // },
+    //   (err) => { console.log("problem : ", err) });
+  }
+
+  public lineChartData:Array<any> = this.data;
+  //  = [
+    // {data: [40], label: 'Place A'},
+    // {data: [28], label: 'Place B'},
+    // {data: [18], label: 'Place C'}
+  // ];
   public lineChartLabels:Array<any> = ['3 min', '6 min', '9 min', '12 min', '15 min', '18 min', '21 min'];
   public lineChartOptions:any = {
     responsive: true
@@ -47,16 +95,16 @@ export class ChartsPage {
   public lineChartLegend:boolean = true;
   public lineChartType:string = 'line';
   
-  public randomize():void {
-    let _lineChartData:Array<any> = new Array(this.lineChartData.length);
-    for (let i = 0; i < this.lineChartData.length; i++) {
-      _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
-      for (let j = 0; j < this.lineChartData[i].data.length; j++) {
-        _lineChartData[i].data[j] = Math.floor((Math.random() * 100) + 1);
-      }
-    }
-    this.lineChartData = _lineChartData;
-  }
+  // public randomize():void {
+  //   let _lineChartData:Array<any> = new Array(this.lineChartData.length);
+  //   for (let i = 0; i < this.lineChartData.length; i++) {
+  //     _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
+  //     for (let j = 0; j < this.lineChartData[i].data.length; j++) {
+  //       _lineChartData[i].data[j] = Math.floor((Math.random() * 100) + 1);
+  //     }
+  //   }
+  //   this.lineChartData = _lineChartData;
+  // }
   
   // events
   public chartClicked(e:any):void {
@@ -65,13 +113,6 @@ export class ChartsPage {
   
   public chartHovered(e:any):void {
     console.log(e);
-  }
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    // console.log('ionViewDidLoad ChartsPage');
   }
 
 }

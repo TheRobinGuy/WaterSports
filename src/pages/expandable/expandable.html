@@ -5,23 +5,18 @@
         <ion-col col-11>
           <button (click)="expandItem(d)" class="divesBtn">
             <div class="diveBtnTitle">
-              <!-- <b>{{d.date | async}} | {{d.location | async}}</b> -->
               <b>{{d.date}} | {{d.location}}</b>
             </div>
             <div [hidden]=d.hidden class="diveBtnBody">
               <ion-row>
-                <!-- <ion-col style="width: 6em;">Depth : {{d.depth | async}}</ion-col> -->
                 <ion-col style="width: 6em;">Depth : {{d.depth}}</ion-col>
-                <!-- <ion-col class="timeFixer">Time : {{d.time | async}} min</ion-col> -->
                 <ion-col class="timeFixer">Time : {{d.time}} min</ion-col>
               </ion-row>
               <ion-row>
-                <!-- <ion-col>Buddy : {{d.buddy | async}}</ion-col> -->
                 <ion-col>Buddy : {{d.buddy}}</ion-col>
               </ion-row>
               <hr/>
               <ion-row>
-                <!-- <ion-col>Dive Type : {{d.diveType | async}}</ion-col> -->
                 <ion-col>Dive Type : {{d.diveType}}</ion-col>
               </ion-row>
             </div>
