@@ -4,6 +4,7 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
+import { dbData, DiveDataProvider } from '../../providers/dive-data/dive-data';
 
 @IonicPage()
 @Component({
@@ -37,17 +38,19 @@ export class ExpandablePage {
   
   // }
 
-  constructor(public navCtrl: NavController, public db: AngularFireDatabase) {
-
-    this.db.list('/dives').valueChanges().subscribe((datas) => {
-      console.log("datas", datas);
-      // datas.map(data => {
-      //   this.dives.push(data);
-      // });
-      this.dives = datas;
-      console.log("dives", this.dives)
-    },
-      (err) => { console.log("probleme : ", err) });
+  constructor(public navCtrl: NavController, public db: AngularFireDatabase, public diveGetter: DiveDataProvider) {
+    diveGetter.getDiveData();
+    this.dives = dbData;
+    console.log("dbData in expandable", dbData);
+    // this.db.list('/dives').valueChanges().subscribe((datas) => {
+    //   console.log("datas", datas);
+    //   // datas.map(data => {
+    //   //   this.dives.push(data);
+    //   // });
+    //   this.dives = datas;
+    //   console.log("dives", this.dives)
+    // },
+    //   (err) => { console.log("probleme : ", err) });
 
   }
 

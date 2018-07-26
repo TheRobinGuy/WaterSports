@@ -16,6 +16,7 @@ import { ChartsModule } from 'ng2-charts';
 import { AngularFireModule } from 'angularfire2';
 import { FIREBASE_CONFIG } from './firebase.credentials';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { DiveDataProvider } from '../providers/dive-data/dive-data';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DiveDataProvider
   ]
 })
 export class AppModule {}
