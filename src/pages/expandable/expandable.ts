@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
 
 @IonicPage()
 @Component({
@@ -9,14 +12,14 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 })
 export class ExpandablePage {
 
-  // dives: AngularFireList<any[]>;
-  // dives: any;
-  dives = [
-    { date: "01 Jan 2018", location: "Mullaghmore, Sligo.", buddy: "Jim o'Tool", depth: "10m", time: "28", airIn: "220", airOut: "180", diveType: "Scenic", hidden: true, showInGraph: false },
-    { date: "05 Jan 2018", location: "Mullaghmore, Sligo.", buddy: "Fred Finch", depth: "11.1m", time: "27", airIn: "220", airOut: "190", diveType: "Training", hidden: true, showInGraph: false },
-    { date: "23 Mar 2018", location: "Cassan Snd, Donegal.", buddy: "Mark Eer", depth: "13.2m", time: "29", airIn: "200", airOut: "140", diveType: "Test", hidden: true, showInGraph: false },
-    { date: "24 Mar 2018", location: "St. Johns Pt, Donegal.", buddy: "Danny Rand", depth: "15m", time: "22", airIn: "210", airOut: "160", diveType: "Scenic", hidden: true, showInGraph: false },
-  ];
+  inputList: any;
+  dives : any = [];
+  // dives = [
+  //   { date: "01 Jan 2018", location: "Mullaghmore, Sligo.", buddy: "Jim o'Tool", depth: "10m", time: "28", airIn: "220", airOut: "180", diveType: "Scenic", hidden: true, showInGraph: false },
+  //   { date: "05 Jan 2018", location: "Mullaghmore, Sligo.", buddy: "Fred Finch", depth: "11.1m", time: "27", airIn: "220", airOut: "190", diveType: "Training", hidden: true, showInGraph: false },
+  //   { date: "23 Mar 2018", location: "Cassan Snd, Donegal.", buddy: "Mark Eer", depth: "13.2m", time: "29", airIn: "200", airOut: "140", diveType: "Test", hidden: true, showInGraph: false },
+  //   { date: "24 Mar 2018", location: "St. Johns Pt, Donegal.", buddy: "Danny Rand", depth: "15m", time: "22", airIn: "210", airOut: "160", diveType: "Scenic", hidden: true, showInGraph: false },
+  // ];
 
   hideAdd: boolean = true;
 
@@ -36,20 +39,16 @@ export class ExpandablePage {
 
   constructor(public navCtrl: NavController, public db: AngularFireDatabase) {
 
-    // this.dives = this.db.list('dives');
+    this.db.list('/dives').valueChanges().subscribe((datas) => {
+      console.log("datas", datas);
+      // datas.map(data => {
+      //   this.dives.push(data);
+      // });
+      this.dives = datas;
+      console.log("dives", this.dives)
+    },
+      (err) => { console.log("probleme : ", err) });
 
-    // this.db.list('dives').valueChanges().subscribe(
-    //   result => {
-    //     this.dives.push(result);
-    //   }
-    // );
-
-    // this.db.list('dives').valueChanges().subscribe(item => {
-    //   item.map((key) => {
-    //     this.dives.push(this.db.object('dives/${key.$key}'));
-    //   })
-    //   // this.dives.push(item)
-    // });
   }
 
   expandItem = (item) => {
