@@ -8,7 +8,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
 @IonicPage()
 @Component({
   selector: 'page-charts',
-  // templateUrl: 'charts.html',
   template: `
   <div *ngIf="lineChartData">
   <div class="row">
@@ -40,7 +39,6 @@ export class ChartsPage {
     this.db.list('/dives').valueChanges().subscribe((datas) => {
       this.dives = datas;
       this.dives.forEach(element => {
-        // console.log(element.depth + ", " + element.date)
         this.data.push( Number(element.depth.slice(0, -1)));
         this.labels.push( element.date );
       });
@@ -55,25 +53,11 @@ export class ChartsPage {
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase) {
-    // this.db.list('/dives').valueChanges().subscribe((datas) => {
-    //   this.dives = datas;
-    //   this.dives.forEach(element => {
-    //     console.log(element.depth + ", " + element.date)
-    //     this.lineChartData.push( element.depth );
-    //   });
-    //   console.log(this.lineChartData);
-    // },
-    //   (err) => { console.log("problem : ", err) });
+
   }
 
-  public lineChartData:Array<any>;// = this.data;
-  //  = [
-    // {data: [40], label: 'Place A'},
-    // {data: [28], label: 'Place B'},
-    // {data: [18], label: 'Place C'}
-  // ];
-  // public lineChartLabels:Array<any> = ['3 min', '6 min', '9 min', '12 min', '15 min', '18 min', '21 min'];
-  public lineChartLabels:Array<any>;// = ['3 min', '6 min', '9 min', '12 min', '15 min', '18 min', '21 min'];
+  public lineChartData:Array<any>;
+  public lineChartLabels:Array<any>;
   public lineChartOptions:any = {
     responsive: true
   };
@@ -106,18 +90,6 @@ export class ChartsPage {
   public lineChartLegend:boolean = false;
   public lineChartType:string = 'line';
   
-  // public randomize():void {
-  //   let _lineChartData:Array<any> = new Array(this.lineChartData.length);
-  //   for (let i = 0; i < this.lineChartData.length; i++) {
-  //     _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
-  //     for (let j = 0; j < this.lineChartData[i].data.length; j++) {
-  //       _lineChartData[i].data[j] = Math.floor((Math.random() * 100) + 1);
-  //     }
-  //   }
-  //   this.lineChartData = _lineChartData;
-  // }
-  
-  // events
   public chartClicked(e:any):void {
     console.log(e);
   }
