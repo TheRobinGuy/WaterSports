@@ -9,7 +9,8 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
   selector: 'page-charts',
   // templateUrl: 'charts.html',
   template: `
-  <div class="row" *ngIf="lineChartData">
+  <div *ngIf="lineChartData">
+  <div class="row">
     <div class="col-md-6">
       <div style="display: block; overflow: hidden;">
       <canvas class="diveChart" baseChart width="350" height="400"
@@ -24,6 +25,7 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
       </div>
     </div>
   </div>
+  </div>
 
   `
 })
@@ -31,17 +33,20 @@ export class ChartsPage {
 
   dives: any = []; 
   data: any = [];
+  labels: any = [];
 
   ngOnInit(){
     this.db.list('/dives').valueChanges().subscribe((datas) => {
       this.dives = datas;
       this.dives.forEach(element => {
-        console.log(element.depth + ", " + element.date)
-        this.data.push( element.depth );
+        // console.log(element.depth + ", " + element.date)
+        this.data.push( element.depth.slice(0, -1) );
+        this.labels.push( element.date );
       });
-      console.log("data: " + this.data);
-      console.log("lineChart: " + this.lineChartData);
-      setTimeout(this.lineChartData = this.dives , 5000);
+      setTimeout(() => {this.lineChartData = this.data;
+        this.lineChartLabels = this.labels;
+        console.log("data: " + this.data);
+        console.log("lineChart: " + this.lineChartData)} , 1000);
 
     },
       (err) => { console.log("problem : ", err) });
@@ -65,7 +70,8 @@ export class ChartsPage {
     // {data: [28], label: 'Place B'},
     // {data: [18], label: 'Place C'}
   // ];
-  public lineChartLabels:Array<any> = ['3 min', '6 min', '9 min', '12 min', '15 min', '18 min', '21 min'];
+  // public lineChartLabels:Array<any> = ['3 min', '6 min', '9 min', '12 min', '15 min', '18 min', '21 min'];
+  public lineChartLabels:Array<any>;// = ['3 min', '6 min', '9 min', '12 min', '15 min', '18 min', '21 min'];
   public lineChartOptions:any = {
     responsive: true
   };
