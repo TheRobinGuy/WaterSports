@@ -41,7 +41,8 @@ export class ChartsPage {
       });
       console.log("data: " + this.data);
       console.log("lineChart: " + this.lineChartData);
-      this.lineChartData = this.dives;
+      setTimeout(this.lineChartData = this.dives , 5000);
+
     },
       (err) => { console.log("problem : ", err) });
   }
