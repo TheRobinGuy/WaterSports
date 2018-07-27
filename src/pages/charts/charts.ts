@@ -39,8 +39,10 @@ export class ChartsPage {
     this.db.list('/dives').valueChanges().subscribe((datas) => {
       this.dives = datas;
       this.dives.forEach(element => {
+        // if(element.showInGraph){
         this.data.push( Number(element.depth.slice(0, -1)));
         this.labels.push( element.date );
+        // }
       });
       setTimeout(() => {this.lineChartData = this.data;
         this.lineChartLabels = this.labels;

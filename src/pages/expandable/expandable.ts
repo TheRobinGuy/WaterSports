@@ -37,7 +37,7 @@ export class ExpandablePage {
       this.dives = datas;
       console.log("dives", this.dives)
     },
-      (err) => { console.log("probleme : ", err) });
+      (err) => { console.log("problem : ", err) });
 
   }
 
@@ -68,7 +68,7 @@ export class ExpandablePage {
 
   addItem = () => {
     if (this.dateIn != '' && this.locationIn != '' && this.buddyIn != '' && this.depthIn != '' && this.minutesIn != '' && this.divetypeIn != '') {
-      let item = { date: this.dateIn, location: this.locationIn, buddy: this.buddyIn, depth: this.depthIn + "m", time: this.minutesIn, airIn: "210", airOut: "160", diveType: this.divetypeIn, hidden: true, showInGraph: false }
+      let item = { date: this.dateIn, location: this.locationIn, buddy: this.buddyIn, depth: this.depthIn + "m", time: this.minutesIn, airIn: "210", airOut: "160", diveType: this.divetypeIn, hidden: true, showInGraph: true }
       this.db.list('dives').push(item);      
       this.dives.push(item);
       this.dateIn = '';
