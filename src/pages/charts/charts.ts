@@ -35,7 +35,26 @@ export class ChartsPage {
   data: any = [];
   labels: any = [];
 
-  ngOnInit(){
+  // ngOnInit(){
+  //   this.db.list('/dives').valueChanges().subscribe((datas) => {
+  //     this.dives = datas;
+  //     this.dives.forEach(element => {
+  //       // if(element.showInGraph){
+  //       this.data.push( Number(element.depth.slice(0, -1)));
+  //       this.labels.push( element.date );
+  //       // }
+  //     });
+  //     setTimeout(() => {this.lineChartData = this.data;
+  //       this.lineChartLabels = this.labels;
+  //       console.log("data: " + this.data);
+  //       console.log("lineChart: " + this.lineChartData);
+  //       console.log("First in array", this.lineChartData[0])} , 1000);
+
+  //   },
+  //     (err) => { console.log("problem : ", err) });
+  // }
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase) {
     this.db.list('/dives').valueChanges().subscribe((datas) => {
       this.dives = datas;
       this.dives.forEach(element => {
@@ -52,10 +71,6 @@ export class ChartsPage {
 
     },
       (err) => { console.log("problem : ", err) });
-  }
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase) {
-
   }
 
   public lineChartData:Array<any>;

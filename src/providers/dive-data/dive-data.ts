@@ -15,8 +15,9 @@ export class DiveDataProvider {
   //   this.db.list('/dives').valueChanges().subscribe((datas) => {
   //     console.log("data", datas);
   //     this.dives = datas;
-  //     dbData = datas;
-  //     console.log("dives", this.dives);
+  //     this.dives.forEach(element => {
+  //       dbData.push( element );
+  //     });
   //   },
   //     (err) => { console.log("problem : ", err) });
   // }
