@@ -103,7 +103,7 @@ export class ChartsPage {
       pointHoverBorderColor: 'rgba(0,0,255,0.8)'
     }
   ];
-  public lineChartLegend:boolean = true;
+  public lineChartLegend:boolean = false;
   public lineChartType:string = 'line';
   
   // public randomize():void {
