@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Chart } from 'chart.js';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+// import { Chart } from 'chart.js';
+// import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 
 @IonicPage()
@@ -14,7 +15,7 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
     <div class="col-md-6">
       <div style="display: block; overflow: hidden;">
       <canvas class="diveChart" baseChart width="350" height="400"
-                  [datasets]="lineChartData"
+                  [data]="lineChartData"
                   [labels]="lineChartLabels"
                   [options]="lineChartOptions"
                   [colors]="lineChartColors"
@@ -40,13 +41,14 @@ export class ChartsPage {
       this.dives = datas;
       this.dives.forEach(element => {
         // console.log(element.depth + ", " + element.date)
-        this.data.push( element.depth.slice(0, -1) );
+        this.data.push( Number(element.depth.slice(0, -1)));
         this.labels.push( element.date );
       });
       setTimeout(() => {this.lineChartData = this.data;
         this.lineChartLabels = this.labels;
         console.log("data: " + this.data);
-        console.log("lineChart: " + this.lineChartData)} , 1000);
+        console.log("lineChart: " + this.lineChartData);
+        console.log("First in array", this.lineChartData[0])} , 1000);
 
     },
       (err) => { console.log("problem : ", err) });

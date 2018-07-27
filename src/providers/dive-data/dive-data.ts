@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+// import { HttpClient } from '@angular/common/http';
+// import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 
 @Injectable()

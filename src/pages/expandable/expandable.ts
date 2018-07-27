@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Observable, Subject } from 'rxjs';
-import { dbData, DiveDataProvider } from '../../providers/dive-data/dive-data';
+// import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
+// import { of } from 'rxjs';
+// import { map } from 'rxjs/operators';
+// import { Observable, Subject } from 'rxjs';
+// import { dbData, DiveDataProvider } from '../../providers/dive-data/dive-data';
+import { DiveDataProvider } from '../../providers/dive-data/dive-data';
 
 @IonicPage()
 @Component({
