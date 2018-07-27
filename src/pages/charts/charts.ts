@@ -39,7 +39,9 @@ export class ChartsPage {
         console.log(element.depth + ", " + element.date)
         this.data.push( element.depth );
       });
+      console.log("data: " + this.data);
       console.log("lineChart: " + this.lineChartData);
+      this.lineChartData = this.dives;
     },
       (err) => { console.log("problem : ", err) });
   }
@@ -56,7 +58,7 @@ export class ChartsPage {
     //   (err) => { console.log("problem : ", err) });
   }
 
-  public lineChartData:Array<any> = this.data;
+  public lineChartData:Array<any>;// = this.data;
   //  = [
     // {data: [40], label: 'Place A'},
     // {data: [28], label: 'Place B'},

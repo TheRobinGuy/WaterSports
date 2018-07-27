@@ -5,25 +5,25 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class DiveDataProvider {
 
-  dives: any = [];
+  // dives: any = [];
 
-  constructor(public db: AngularFireDatabase) {
-    this.getDiveData();
-  }
+  // constructor(public db: AngularFireDatabase) {
+  //   this.getDiveData();
+  // }
 
-  getDiveData = () => {
-    this.db.list('/dives').valueChanges().subscribe((datas) => {
-      console.log("data", datas);
-      this.dives = datas;
-      dbData = datas;
-      console.log("dives", this.dives);
-    },
-      (err) => { console.log("problem : ", err) });
-  }
+  // getDiveData = () => {
+  //   this.db.list('/dives').valueChanges().subscribe((datas) => {
+  //     console.log("data", datas);
+  //     this.dives = datas;
+  //     dbData = datas;
+  //     console.log("dives", this.dives);
+  //   },
+  //     (err) => { console.log("problem : ", err) });
+  // }
 
-  returnDiveData = () => {
-    return this.dives;
-  }
+  // returnDiveData = () => {
+  //   return this.dives;
+  // }
 
 }
 
