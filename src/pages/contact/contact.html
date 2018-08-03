@@ -8,6 +8,16 @@
 
 <ion-content>
 
-  <h1>Your location : Lat : {{lat}}, Long : {{lng}}</h1>
+  <h1>Your location : </h1>
+  <h2>Lat : {{lat}}</h2>
+  <h2>Long : {{lng}}</h2>
+
+<ion-list>
+  <ion-item text-wrap *ngFor="let paths of path">
+    <ion-row>
+      <p>Current Path : {{paths.lat}}</p>
+    </ion-row>
+  </ion-item>
+</ion-list>
   
 </ion-content>

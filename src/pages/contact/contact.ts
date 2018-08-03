@@ -10,7 +10,9 @@ export class ContactPage {
 
   lat: any;
   lng: any;
-  
+
+  path: any = [];
+
   constructor(public navCtrl: NavController, public geo: Geolocation) {
   }
 
@@ -18,7 +20,19 @@ export class ContactPage {
     this.geo.getCurrentPosition().then( pos => {
       this.lat = pos.coords.latitude;
       this.lng = pos.coords.longitude;
+      this.path.push({"lat": this.lat, "lng": this.lng});
+      this.addToPath();
     }).catch( err => console.log(err));
+  }
+
+  addToPath(){
+    setInterval(() => {
+      this.geo.getCurrentPosition().then( pos => {
+        this.lat = pos.coords.latitude;
+        this.lng = pos.coords.longitude;
+        this.path.push({"lat": this.lat, "lng": this.lng});
+      }).catch( err => console.log(err));
+    },6000);
   }
  
 
