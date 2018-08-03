@@ -17,6 +17,7 @@ import { AngularFireModule } from 'angularfire2';
 import { FIREBASE_CONFIG } from './firebase.credentials';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { DiveDataProvider } from '../providers/dive-data/dive-data';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { DiveDataProvider } from '../providers/dive-data/dive-data';
   providers: [
     StatusBar,
     SplashScreen,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DiveDataProvider
   ]
