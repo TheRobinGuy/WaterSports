@@ -16,7 +16,9 @@ export class MyApp {
   private app;
 	@ViewChild(Nav) nav: Nav;
 	private platform;
-	private menu: MenuController;
+  private menu: MenuController;
+  
+  showLogIn: boolean = true;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
     private auth: AuthService, 
@@ -30,6 +32,10 @@ export class MyApp {
       splashScreen.hide();
     });
     this.initializeApp();
+  }
+
+  toggleLogIn = () => {
+    this.showLogIn = !this.showLogIn;
   }
 
   initializeApp(){
