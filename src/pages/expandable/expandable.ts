@@ -7,6 +7,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 // import { Observable, Subject } from 'rxjs';
 // import { dbData, DiveDataProvider } from '../../providers/dive-data/dive-data';
 import { DiveDataProvider } from '../../providers/dive-data/dive-data';
+import { AuthService } from '../../services/auth.services';
 
 @IonicPage()
 @Component({
@@ -18,6 +19,7 @@ export class ExpandablePage {
 
   inputList: any;
   dives : any = [];
+  divesHolding : any = [];
 
   hideAdd: boolean = true;
 
@@ -31,10 +33,16 @@ export class ExpandablePage {
   addIcon = '+';
 
 
-  constructor(public navCtrl: NavController, public db: AngularFireDatabase, public diveGetter: DiveDataProvider) {
+  constructor(public navCtrl: NavController, public db: AngularFireDatabase, public diveGetter: DiveDataProvider, private auth: AuthService) {
     this.db.list('/dives').valueChanges().subscribe((datas) => {
       console.log("datas", datas);
-      this.dives = datas;
+      this.divesHolding = datas;
+      for(var i = 0; i< this.divesHolding.length; i++){
+        if(this.divesHolding[i].user == this.auth.getEmail()){
+          this.dives.push(this.divesHolding[i]);
+        }
+      }
+
       console.log("dives", this.dives)
     },
       (err) => { console.log("problem : ", err) });
@@ -68,7 +76,7 @@ export class ExpandablePage {
 
   addItem = () => {
     if (this.dateIn != '' && this.locationIn != '' && this.buddyIn != '' && this.depthIn != '' && this.minutesIn != '' && this.divetypeIn != '') {
-      let item = { date: this.dateIn, location: this.locationIn, buddy: this.buddyIn, depth: this.depthIn + "m", time: this.minutesIn, airIn: "210", airOut: "160", diveType: this.divetypeIn, hidden: true, showInGraph: true }
+      let item = { date: this.dateIn, location: this.locationIn, buddy: this.buddyIn, depth: this.depthIn + "m", time: this.minutesIn, airIn: "210", airOut: "160", diveType: this.divetypeIn, hidden: true, showInGraph: true, user: this.auth.getEmail() }
       this.db.list('dives').push(item);      
       this.dives.push(item);
       this.dateIn = '';
