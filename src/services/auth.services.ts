@@ -11,7 +11,7 @@ export class AuthService {
 		afAuth.authState.subscribe(user => {
 			this.user = user;
 		});
-	}
+    }
 
 	signInWithEmail(credentials) {
 		console.log('Sign in with email');

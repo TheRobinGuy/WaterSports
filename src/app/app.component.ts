@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { App, MenuController, Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -14,7 +14,7 @@ export class MyApp {
   rootPage:any = LoginPage;
 
   private app;
-  private nav;
+	@ViewChild(Nav) nav: Nav;
 	private platform;
 	private menu: MenuController;
 
@@ -29,6 +29,23 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+    this.initializeApp();
+  }
+
+  initializeApp(){
+    this.auth.afAuth.authState
+    .subscribe(
+      user => {
+        if (user) {
+          this.rootPage = TabsPage;
+        } else {
+          this.rootPage = LoginPage;
+        }
+      },
+      () => {
+        this.rootPage = LoginPage;
+      }
+    );
   }
 
   login() {
