@@ -92,6 +92,11 @@ export class ExpandablePage {
     }
   }
 
+  // Deletes entire Db right now
+  deleteItem = (key) => {
+    // this.db.list('/dives').remove(key['$key'])
+  }
+
   showSelectedInGraph = (d) => {
     d.showInGraph = !d.showInGraph;
   }

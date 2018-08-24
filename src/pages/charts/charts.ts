@@ -37,28 +37,8 @@ export class ChartsPage {
   labels: any = [];
   divesHolding : any = [];
 
-  // ngOnInit(){
-  //   this.db.list('/dives').valueChanges().subscribe((datas) => {
-  //     this.dives = datas;
-  //     this.dives.forEach(element => {
-  //       // if(element.showInGraph){
-  //       this.data.push( Number(element.depth.slice(0, -1)));
-  //       this.labels.push( element.date );
-  //       // }
-  //     });
-  //     setTimeout(() => {this.lineChartData = this.data;
-  //       this.lineChartLabels = this.labels;
-  //       console.log("data: " + this.data);
-  //       console.log("lineChart: " + this.lineChartData);
-  //       console.log("First in array", this.lineChartData[0])} , 1000);
-
-  //   },
-  //     (err) => { console.log("problem : ", err) });
-  // }
-
   constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase, private auth: AuthService) {
     this.db.list('/dives').valueChanges().subscribe((datas) => {
-      // this.dives = datas;
       this.divesHolding = datas;
       this.dives = [];
       this.data = [];
@@ -69,21 +49,14 @@ export class ChartsPage {
         }
       }
 
-      // Getting clones of the dates?
-      setTimeout(() => {
       this.dives.forEach(element => {
-        // if(element.showInGraph){
         this.data.push( Number(element.depth.slice(0, -1)));
         this.labels.push( element.date );
-        // }
-      }), 5000
-    });
+      });
 
       setTimeout(() => {this.lineChartData = this.data;
         this.lineChartLabels = this.labels;
-        console.log("data: " + this.data);
-        console.log("lineChart: " + this.lineChartData);
-        console.log("First in array", this.lineChartData[0])} , 6000);
+        console.log("First in array", this.lineChartData[0])} , 1000);
 
     },
       (err) => { console.log("problem : ", err) });
