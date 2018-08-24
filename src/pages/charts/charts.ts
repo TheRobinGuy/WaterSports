@@ -62,15 +62,14 @@ export class ChartsPage {
       this.divesHolding = datas;
       this.dives = [];
       this.data = [];
-      console.log("========================" + datas)
+      this.labels = [];
       for(var i = 0; i< this.divesHolding.length; i++){
-        console.log("========================= i - " + i)
         if(this.divesHolding[i].user == this.auth.getEmail()){
           this.dives.push(this.divesHolding[i]);
-          console.log("========================" + this.dives)
         }
       }
 
+      // Getting clones of the dates?
       setTimeout(() => {
       this.dives.forEach(element => {
         // if(element.showInGraph){
