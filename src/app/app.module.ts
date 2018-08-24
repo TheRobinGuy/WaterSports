@@ -22,6 +22,7 @@ import { LoginPage } from '../pages/login/login';
 import { AuthService } from '../services/auth.services';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { SignupPage } from '../pages/signup/signup';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
     TabsPage,
     ExpandablePage,
     ChartsPage,
-    LoginPage
+    LoginPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
     TabsPage,
     ExpandablePage,
     ChartsPage,
-    LoginPage
+    LoginPage,
+    SignupPage
   ],
   providers: [
     StatusBar,
