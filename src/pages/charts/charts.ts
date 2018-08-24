@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // import { Chart } from 'chart.js';
 // import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { AuthService } from '../../services/auth.services';
 
 
 @IonicPage()
@@ -34,6 +35,7 @@ export class ChartsPage {
   dives: any = []; 
   data: any = [];
   labels: any = [];
+  divesHolding : any = [];
 
   // ngOnInit(){
   //   this.db.list('/dives').valueChanges().subscribe((datas) => {
@@ -54,20 +56,35 @@ export class ChartsPage {
   //     (err) => { console.log("problem : ", err) });
   // }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase, private auth: AuthService) {
     this.db.list('/dives').valueChanges().subscribe((datas) => {
-      this.dives = datas;
+      // this.dives = datas;
+      this.divesHolding = datas;
+      this.dives = [];
+      this.data = [];
+      console.log("========================" + datas)
+      for(var i = 0; i< this.divesHolding.length; i++){
+        console.log("========================= i - " + i)
+        if(this.divesHolding[i].user == this.auth.getEmail()){
+          this.dives.push(this.divesHolding[i]);
+          console.log("========================" + this.dives)
+        }
+      }
+
+      setTimeout(() => {
       this.dives.forEach(element => {
         // if(element.showInGraph){
         this.data.push( Number(element.depth.slice(0, -1)));
         this.labels.push( element.date );
         // }
-      });
+      }), 5000
+    });
+
       setTimeout(() => {this.lineChartData = this.data;
         this.lineChartLabels = this.labels;
         console.log("data: " + this.data);
         console.log("lineChart: " + this.lineChartData);
-        console.log("First in array", this.lineChartData[0])} , 1000);
+        console.log("First in array", this.lineChartData[0])} , 6000);
 
     },
       (err) => { console.log("problem : ", err) });
