@@ -37,6 +37,7 @@ export class ExpandablePage {
     this.db.list('/dives').valueChanges().subscribe((datas) => {
       console.log("datas", datas);
       this.divesHolding = datas;
+      this.dives = [];
       for(var i = 0; i< this.divesHolding.length; i++){
         if(this.divesHolding[i].user == this.auth.getEmail()){
           this.dives.push(this.divesHolding[i]);
