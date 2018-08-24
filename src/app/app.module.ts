@@ -18,6 +18,10 @@ import { FIREBASE_CONFIG } from './firebase.credentials';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { DiveDataProvider } from '../providers/dive-data/dive-data';
 import { Geolocation } from '@ionic-native/geolocation';
+import { LoginPage } from '../pages/login/login';
+import { AuthService } from '../services/auth.services';
+import { NgxErrorsModule } from '@ultimate/ngxerrors';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @NgModule({
   declarations: [
@@ -27,14 +31,16 @@ import { Geolocation } from '@ionic-native/geolocation';
     HomePage,
     TabsPage,
     ExpandablePage,
-    ChartsPage
+    ChartsPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     ChartsModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    NgxErrorsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,14 +50,17 @@ import { Geolocation } from '@ionic-native/geolocation';
     HomePage,
     TabsPage,
     ExpandablePage,
-    ChartsPage
+    ChartsPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DiveDataProvider
+    DiveDataProvider,
+    AngularFireAuth,
+    AuthService
   ]
 })
 export class AppModule {}
