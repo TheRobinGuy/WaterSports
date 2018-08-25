@@ -37,30 +37,7 @@ export class ChartsPage {
   labels: any = [];
   divesHolding : any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase, private auth: AuthService) {
-    this.db.list('/dives').valueChanges().subscribe((datas) => {
-      this.divesHolding = datas;
-      this.dives = [];
-      this.data = [];
-      this.labels = [];
-      for(var i = 0; i< this.divesHolding.length; i++){
-        if(this.divesHolding[i].user == this.auth.getEmail()){
-          this.dives.push(this.divesHolding[i]);
-        }
-      }
 
-      this.dives.forEach(element => {
-        this.data.push( Number(element.depth.slice(0, -1)));
-        this.labels.push( element.date );
-      });
-
-      setTimeout(() => {this.lineChartData = this.data;
-        this.lineChartLabels = this.labels;
-        console.log("First in array", this.lineChartData[0])} , 1000);
-
-    },
-      (err) => { console.log("problem : ", err) });
-  }
 
   public lineChartData:Array<any>;
   public lineChartLabels:Array<any>;
@@ -95,6 +72,29 @@ export class ChartsPage {
   ];
   public lineChartLegend:boolean = false;
   public lineChartType:string = 'line';
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public db: AngularFireDatabase, private auth: AuthService) {
+    this.db.list('/dives').valueChanges().subscribe((datas) => {
+      this.divesHolding = datas;
+      this.dives = [];
+      this.data = [];
+      this.labels = [];
+      for(var i = 0; i< this.divesHolding.length; i++){
+        if(this.divesHolding[i].user == this.auth.getEmail()){
+          this.dives.push(this.divesHolding[i]);
+        }
+      }
+
+      this.dives.forEach(element => {
+        this.data.push( Number(element.depth.slice(0, -1)));
+        this.labels.push( element.date );
+      });
+        this.lineChartData = this.data;
+        this.lineChartLabels = this.labels;
+
+    },
+      (err) => { console.log("problem : ", err) });
+  }
   
   public chartClicked(e:any):void {
     console.log(e);
